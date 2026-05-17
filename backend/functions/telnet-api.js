@@ -99,7 +99,7 @@ function parse_display(strdsp) {
         return [];
     }
 }
-function parse_brick(strin) {
+function parse_brick(strin, config) {
     try {
         let rc = {};
         const lst = strin.split('\n');
@@ -121,9 +121,16 @@ function parse_brick(strin) {
                     Tezro: "Rackmount WS [2MB flash]"
                     "Chimera Blade [2MB flash]" = Onyx350
                     "Chimera Server [2MB flash]" = Origin350
+                    "Opus [2MB flash]" = Altix 350
+                    "C (IP41) [2MB flash]" = Altix 3000
+                    "IX [2MB flash]" = Altix 3000 iX
                      */
                     if (rc[objID].brickType === 'R') {
-                        rc[objID].skin = "router";
+                        if (config.routerStyle && config.routerStyle === "altix") {
+                            rc[objID].skin = "router-altix";
+                        } else {
+                            rc[objID].skin = "router";
+                        }
                     } else {
                         let bType = (rc[objID].type || '').trim();
                         if (bType.startsWith('C (IP45)')) {
@@ -135,6 +142,19 @@ function parse_brick(strin) {
                         } else if (bType.toLowerCase().indexOf('chimera blade') >= 0) {
                             rc[objID].skin = "o350";
                             rc[objID].productLabel = "sgi onyx 350";
+                        } else if (bType.startsWith('Opus')) { //Altix 350
+                            if (config.altix350Style == "grey") {
+                                rc[objID].skin = "grey";
+                            } else {
+                                rc[objID].skin = "yellow";
+                            }
+                            rc[objID].productLabel = "sgi altix 350";
+                        }  else if (bType.startsWith('C (IP41)')) { //Altix 3000
+                            rc[objID].skin = "a3000";
+                            rc[objID].productLabel = "sgi altix 3000";
+                        }  else if (bType.startsWith('IX')) { //Altix iX
+                            rc[objID].skin = "a3000ix";
+                            rc[objID].productLabel = "sgi altix iX brick";
                         } else { // Chimera server
                             rc[objID].skin = "o350";
                             rc[objID].productLabel = "sgi origin 350";
@@ -163,11 +183,11 @@ telnetsvc.cmd_plain = async (cmd) => {
         return [];
     }
 };
-telnetsvc.cmd_brick = async () => {
+telnetsvc.cmd_brick = async (config) => {
     try {
         if (!await l2connect()) return [];
         let rc = await connection.exec("brick");
-        return parse_brick(rc);
+        return parse_brick(rc, config);
     } catch (e) {
         console.log(e);
         return [];
@@ -223,7 +243,7 @@ telnetsvc.cmd_racksummary = async (config) => {
         let displayRC = await connection.exec("display");
         let display = parse_display(displayRC);
         let brickRC = await connection.exec("brick");
-        let brick = parse_brick(brickRC);
+        let brick = parse_brick(brickRC, config);
         // combine both payloads into list array
         let rc = [];
         for (let b in brick) {
@@ -242,9 +262,17 @@ telnetsvc.cmd_racksummary = async (config) => {
             rc.sort((a, b) => parseFloat(a.sortNr) - parseFloat(b.sortNr));
         } else {
             if (config.rackSorting?.sortAscending) {
-                rc.sort((current, next) => { return current.id.localeCompare(next.id) });
+                rc.sort((current, next) => {
+                    let numA = parseInt(current.id.replace(/\D/g, ''));
+                    let numB = parseInt(next.id.replace(/\D/g, ''));
+                    return numA - numB;
+                });
             } else {
-                rc.sort((current, next) => { return next.id.localeCompare(current.id) });
+                rc.sort((current, next) => {
+                    let numA = parseInt(current.id.replace(/\D/g, ''));
+                    let numB = parseInt(next.id.replace(/\D/g, ''));
+                    return numB - numA;
+                });
             }
         }
         return rc;
@@ -253,14 +281,14 @@ telnetsvc.cmd_racksummary = async (config) => {
         return [];
     }
 };
-telnetsvc.cmd_bricksummary = async (sysid) => {
+telnetsvc.cmd_bricksummary = async (sysid, config) => {
     // combined data of brick and display
     try {
         if (!await l2connect()) return [];
         let displayRC = await connection.exec(sysid + " display");
         let display = parse_display(displayRC);
         let brickRC = await connection.exec(sysid + " brick");
-        let brick = parse_brick(brickRC);
+        let brick = parse_brick(brickRC, config);
         // combine both payloads into list array
         let rc = [];
         for (let b in brick) {
