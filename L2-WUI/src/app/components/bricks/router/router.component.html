@@ -1,0 +1,10 @@
+<div class="brick">
+    <div class="lcd">
+        <div class="lcd1">{{brick?.display?.line1||''}}</div>
+        <div class="lcd2">{{brick?.display?.line2||''}}</div>
+    </div>
+    <div class="powerButton {{brick?.display?.leds?.pwr?'LEDon':''}}"></div>
+    <div class="led attentionLED {{brick?.display?.leds?.service?'LEDon':''}}"></div>
+    <div class="led faultLED {{brick?.display?.leds?.fault?'LEDon':''}}"></div>
+    <div class="sysid">{{sysid}}</div>
+</div>

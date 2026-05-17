@@ -1,0 +1,39 @@
+<div class="bodycontainer">
+    <div *ngIf="lstConfig.length == 0" class="button-row">
+        <button mat-fab extended color="primary" (click)="btnGetConfig()" [disabled]="backendSVC.loading">
+            <mat-icon>power</mat-icon>
+            Connect to L2 controller
+        </button>
+    </div>
+    <div *ngIf="lstConfig.length > 0">
+
+        <div class="button-row">
+            <button mat-fab extended color="primary" (click)="btnPower(true)" [disabled]="backendSVC.loading">
+                <mat-icon>power_settings_new</mat-icon>
+                Power up
+            </button>
+            <button mat-fab extended color="basic" (click)="btnPower(false)" [disabled]="backendSVC.loading">
+                <mat-icon>power_settings_new</mat-icon>
+                Power down
+            </button>
+        </div>
+        <br />
+        <mat-accordion class="example-headers-align" multi>
+
+            <mat-expansion-panel *ngFor="let entry of lstConfig | orderBy: {property: 'id' , direction: 1}">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{entry.ltype}} - {{entry.id}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        {{entry.addr}}
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+
+
+            </mat-expansion-panel>
+
+        </mat-accordion>
+    </div>
+</div>

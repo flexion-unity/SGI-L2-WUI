@@ -1,0 +1,15 @@
+.brick { position: relative; border: 1px solid black; width: 408px; }
+.sysid { background-color: rgba(0,0,0,0.5); 
+    padding: 2px 6px; border-radius: 4px; 
+    font-size: 13px; color: white;
+    width: 50px; font-weight: bold;
+    position: absolute; top: 7px; left: 9px;
+}
+.productLabel { font-family: SGI-Bold; font-weight: bold; }
+
+@media all and (max-width: 480px) {
+    .brick { width: 360px; height: 73px; }
+}
+@media all and (min-width: 900px) {
+    .brick { width: 560px; height: 114px; }
+}

@@ -1,0 +1,72 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; background-color: #303030; color: white; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.bodycontainer { padding: 12px; }
+.full-width { width: 100%; }
+.warning { padding: 12px 20px; border-radius: 4px; background-color: #ffea99; margin: 10px 0; }
+
+h1, h2, h3, h4 { font-weight: 500; }
+
+.loader .mat-progress-spinner { margin: auto; }
+.clear { clear: both; }
+.center-items { display: grid; place-items: center; }
+
+.flex-row { display: flex; }
+.flex-grow-1 { flex-grow: 1; }
+.flex-grow-2 { flex-grow: 2; }
+
+.mobile-only { display: none; }
+@media all and (max-width: 768px) {
+    .mobile-only { display: block; }
+}
+
+@media all and (max-width: 768px) {
+    .desktop-only { display: none; }
+}
+.href-btn { border: 1px solid black; padding: 8px; border-radius: 4px; color: black !important; background-color: white; 
+    text-decoration: none;
+}
+.sNav { padding-top: 26px; }
+.uInfo { padding: 12px 0; }
+.pNav { list-style: none; padding: 0; margin: 0 0 10px 0; }
+.pNav li a, .pNav li a:visited { text-decoration: none; color: rgb(95, 95, 95); font-size: 16px; }
+.pNav li a:hover, .pNav li a:active { color: #4ac089; }
+.pNav li { border-bottom: 1px solid lightgray; padding: 16px 0 16px 6px; }
+.pNav li:last-child { border-bottom: 0; }
+.pNav li .mat-icon { color: #4ac089; margin-right: 8px; vertical-align: bottom; }
+.pNav li.active a { color: #4ac089; }
+.pNav li.active { background-color: #effff5; }
+.pNavContainer { border-right: 1px solid lightgray; padding-right: 12px;  }
+
+.sNavAdmin .pNav li.active { background-color: #fff6f6; }
+.sNavAdmin .pNav li .mat-icon { color: #c42f2f; margin-right: 8px; vertical-align: bottom; }
+.sNavAdmin .pNav li.active a { color: #bb1f1f; }
+.sNavAdmin .pNav li a:hover, .sNavAdmin .pNav li a:active { color: #c42f2f; }
+
+
+@media only screen and (min-width: 960px) {
+    .pNavContainer { min-height: 300px; }
+}
+@media all and (max-width: 768px) { 
+    .pNavContainer { border-right: 0; }
+}
+.loader .mat-progress-spinner { margin: auto; }
+.actionbar { float: right; padding: 6px 0 12px 0; }
+.actionbar button { margin-left: 6px; }
+.actionbarLeft { float: left; padding: 6px 0 12px 0; }
+.actionbarLeft button { margin-right: 6px; }
+.mat-card-header-text { width: 100%; margin: 0 !important; }
+.clear { clear: both; }
+
+/* sgi font */
+@font-face {
+    font-family: 'SGI-Bold';
+    font-style: bold;
+    font-weight: 300;
+    font-display: swap;
+    src: url(./assets/fonts/SGI-Bold.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+a, a:visited, a:focus, a:active { color: #8b6f66; text-decoration: underline; }
+a:hover { color: #63524d; }

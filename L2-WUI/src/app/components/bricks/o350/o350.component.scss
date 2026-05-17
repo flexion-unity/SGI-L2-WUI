@@ -1,0 +1,35 @@
+.brick { 
+    height: 83px; background-size: contain; background-repeat: no-repeat;
+}
+.tezroSkin { background-image: url(../../../../assets/img/bricks/tezro.png); }
+.O350Skin { background-image: url(../../../../assets/img/bricks/O350.png); }
+
+.productLabel { position: absolute; left: 270px; top: 60px; font-size: 10px; color: white; }
+.lcd { position: absolute; left: 183px; top: 29px; font-size: 8px; color: black;
+    line-height: 8px; overflow: hidden; white-space: nowrap; width: 43px;
+}
+.led { position: absolute; background-color: grey; border: 1px solid black; border-radius: 9px; width: 2px; height: 10px;}
+.attentionLED {  left: 192px; top: 52px; }
+.faultLED { left: 185px; top: 52px; }
+.powerButton { position: absolute; background-color: rgb(0,121,11); border: 1px solid black; border-radius: 9px; 
+    width: 2px; height: 6px; left: 204px; top: 53px; 
+}
+
+@media all and (max-width: 480px) {
+    .lcd { left: 160px; top: 27px; width: 43px; font-size: 7px; line-height: 6px; }
+    .powerButton { left: 180px; top: 46px; }
+    .attentionLED {  left: 169px; top: 46px;  height: 7px; }
+    .faultLED { left: 163px; top: 46px; height: 7px; }
+    .productLabel { left: 240px; top: 53px; font-size: 9px; }
+}
+
+@media all and (min-width: 900px) {
+    .lcd { left: 250px; top: 42px; width: 63px; font-size: 9px; line-height: 9px; }
+    .powerButton { width: 3px; height: 8px; left: 280px; top: 74px; }
+    .attentionLED {  left: 264px; top: 72px; height: 11px; }
+    .faultLED { left: 254px; top: 72px; height: 11px; }
+    .productLabel { left: 371px; top: 86px; font-size: 12px; }
+}
+
+.faultLED.LEDon { background-color: rgb(255, 47, 47); }
+.attentionLED.LEDon { background-color: rgb(255, 200, 47); }

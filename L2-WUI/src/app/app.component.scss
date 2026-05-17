@@ -1,0 +1,10 @@
+.fixed-top { position: fixed; top: 0; right: 0; left: 0; z-index: 1000; }
+.header { color: white; height: 58px; background-color: #5e0484; }
+.header .logo { width: 36px; }
+.header .apptitle { margin: 9px 12px 0 24px; height: 43px; }
+.header .centertitle { font-size: 17px; padding-top: 18px; }
+.header .right-nav { margin: 0; padding: 13px 0 0 0; list-style: none; }
+.header .right-nav li { float: right; }
+.header .right-nav li button { font-size: 16px; }
+.header-fixed-spacer { padding-top: 64px; }
+.headerLoader { height: 6px; background-color: #303030; }

@@ -1,0 +1,39 @@
+node_modules
+npm-debug.log
+yarn-error.log
+/backend/config.js
+/backend/wui/
+
+# Compiled output
+L2-WUI/dist
+L2-WUI/tmp
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+L2-WUI/.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Miscellaneous
+L2-WUI/.angular/
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+
+# System files
+.DS_Store
+Thumbs.db

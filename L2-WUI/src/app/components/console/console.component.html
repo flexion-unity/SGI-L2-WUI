@@ -1,0 +1,15 @@
+<div class="term-container">
+    <div class="term">
+        <ul>
+            <li *ngFor="let row of console">{{row}}</li>
+        </ul>
+        <div id="scrollTarget"></div>
+    </div>
+    <div class="console-input">
+        <mat-form-field appearance="outline" class="full-width">
+            <input matInput placeholder="Type here" type="text" [(ngModel)]="cmd" (keydown)="termKeyDown($event)"
+                autocomplete="off">
+            <mat-icon matPrefix>terminal</mat-icon>
+        </mat-form-field>
+    </div>
+</div>

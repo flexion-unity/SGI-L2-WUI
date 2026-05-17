@@ -1,0 +1,20 @@
+<div style="display: grid;">
+    
+    <div class="rackFrame">
+        <div class="rack">
+            <div *ngFor="let brick of lstBrick" style="cursor:pointer;">
+                <brick-o300 *ngIf="brick.skin==='o300'" [brick]="brick" [sysid]="brick.id" (click)="btnBrickDialog(brick)"></brick-o300>
+                <brick-o350 *ngIf="brick.skin==='o350' || brick.skin==='tezro'" [skin]="brick.skin" [brick]="brick" [sysid]="brick.id" (click)="btnBrickDialog(brick)"></brick-o350>
+                <brick-router *ngIf="brick.skin==='router'" [brick]="brick" [sysid]="brick.id" (click)="btnBrickDialog(brick)"></brick-router>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottomButtons">
+        <button mat-fab extended color="primary" (click)="btnGetConfig(true)" [disabled]="backendSVC.loading">
+            <mat-icon>refresh</mat-icon>
+            Refresh
+        </button>
+    </div>
+    <button mat-button style="width: 64px;" (click)="btnShowTestRack()" title="Load test rack"></button>
+</div>

@@ -1,0 +1,36 @@
+<div class="dialog">
+    <h2 mat-dialog-title>{{sysid}}</h2>
+    <mat-dialog-content class="mat-typography">
+        <div class="loader" *ngIf="inProgress">
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+        <div>
+            <div class="lcd">
+                <div class="lcd1">{{brick?.display?.line1||''}}</div>
+                <div class="lcd2">{{brick?.display?.line2||''}}</div>
+            </div>
+            <div class="flex-row ledbuttons">
+                <mat-slide-toggle color="warn" class="flex-grow-1" [(ngModel)]="brick.display.leds.service"
+                (ngModelChange)="onServiceLEDToggle()">
+                    Attention
+                </mat-slide-toggle>
+                <mat-slide-toggle color="warn" class="flex-grow-1" [(ngModel)]="brick.display.leds.fault"
+                (ngModelChange)="onFaultLEDToggle()">
+                    Failure
+                </mat-slide-toggle>
+            </div>
+            <button mat-stroked-button [disabled]="inProgress" class="{{brick?.display?.leds?.pwr?'btnON':''}}" (click)="btnPower()">
+                <mat-icon>power_settings_new</mat-icon>
+                {{brick?.display?.leds?.pwr?'Power down':'Power up'}} {{sysid}}
+            </button>
+
+        </div>
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-stroked-button (click)="btnRefresh()">
+            <mat-icon>refresh</mat-icon> Refresh
+        </button>
+        <button mat-stroked-button mat-dialog-close cdkFocusInitial>Close</button>
+    </mat-dialog-actions>
+</div>

@@ -1,0 +1,17 @@
+<div>
+    <mat-dialog-content>
+        <button mat-fab extended color="primary" style="width: 100%" (click)="btnPower(true)" [disabled]="backendSVC.loading">
+            <mat-icon>power_settings_new</mat-icon>
+            Power up
+        </button>
+        <br/><br/>
+        <button mat-fab extended color="basic" style="width: 100%" (click)="btnPower(false)" [disabled]="backendSVC.loading">
+            <mat-icon>power_settings_new</mat-icon>
+            Power down
+        </button>
+        <br/><br/>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-stroked-button mat-dialog-close cdkFocusInitial>Close</button>
+    </mat-dialog-actions>
+</div>

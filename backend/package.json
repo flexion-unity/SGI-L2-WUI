@@ -1,0 +1,15 @@
+{
+  "name": "flx-sgi-l2-wui",
+  "version": "1.0.0",
+  "description": "Web interface for SGI L2 Controller",
+  "main": "webserver.js",
+  "scripts": {
+    "start": "node ./webserver.js"
+  },
+  "author": "flexion",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "telnet-client": "^2.1.0"
+  }
+}
